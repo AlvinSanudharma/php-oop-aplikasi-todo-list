@@ -38,9 +38,27 @@ namespace View {
         }
 
         function addTodoList():void {
+            echo "Menambah Todo" . PHP_EOL;
+
+            $todo = InputHelper::input("Mau ngapain? (Ketik x untuk membatalkan)");
+        
+            if ($todo == 'x') {
+                echo "Batal menambahlan Todo" . PHP_EOL;
+            } else {
+                $this->todoListService->addTodoList($todo);
+            }
         }
 
         function removeTodoList():void {
+            echo "Menghapus Todo ";
+
+            $pilih = InputHelper::input("No ( Ketik x untuk membatalkan)");
+        
+            if ($pilih == 'x') {
+                echo "Batal menghapus todo" . PHP_EOL;
+            } else {    
+                $this->todoListService->removeTodoList($pilih);
+            }
         }
     }
 }

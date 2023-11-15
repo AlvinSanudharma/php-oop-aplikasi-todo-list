@@ -22,4 +22,38 @@ function testViewShowTodoList(): void {
     $todoListView->showTodoList();
 }
 
-testViewShowTodoList();
+function testViewAddTodoList(): void {
+    $todoListRepository = new TodoListRepositoryImpl();
+    $todoListService = new TodoListServiceImpl($todoListRepository);
+    $todoListView = new TodoListView($todoListService);
+
+    $todoListService->addTodoList("Belajar PHP");
+    $todoListService->addTodoList("Belajar TypeScript");
+
+    $todoListService->showTodoList();
+
+    $todoListView->addTodoList();
+
+    $todoListService->showTodoList();
+}
+
+function testViewRemoveTodoList(): void {
+    $todoListRepository = new TodoListRepositoryImpl();
+    $todoListService = new TodoListServiceImpl($todoListRepository);
+    $todoListView = new TodoListView($todoListService);
+
+    $todoListService->addTodoList("Belajar PHP");
+    $todoListService->addTodoList("Belajar TypeScript");
+
+    $todoListService->showTodoList();
+
+    $todoListView->removeTodoList();
+
+    $todoListService->showTodoList();
+
+    $todoListView->removeTodoList();
+
+    $todoListService->showTodoList();
+}
+
+testViewRemoveTodoList();
